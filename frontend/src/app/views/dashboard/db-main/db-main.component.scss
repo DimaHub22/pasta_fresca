@@ -1,0 +1,114 @@
+.dashboard {
+  display: flex;
+
+  .sidebar {
+    box-sizing: border-box;
+    width: 200px;
+    height: 100vh;
+    flex-shrink: 0;
+    background: rgb(178 178 157 / 70%);;
+    padding: 0 20px;
+    border-right: 1px solid #00000042;
+
+    .sidebar-items {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      .title {
+        text-align: center;
+        padding: 15px 0;
+
+        a {
+          font-size: 18px;
+          text-decoration: none;
+          color: #0b0b0b;
+        }
+      }
+
+      nav {
+        flex: 1;
+
+        .nav {
+          padding: 0;
+
+          .db-menu {
+            list-style: none;
+            margin-bottom: 5px;
+            cursor: pointer;
+            color: black;
+            font-size: 14px;
+
+            a {
+              font-size: 14px;
+              text-decoration: none;
+              color: #0b0b0b;
+            }
+
+            svg {
+              margin-left: 15px;
+              vertical-align: middle;
+              cursor: pointer;
+            }
+
+            &.active {
+              padding: 5px 10px;
+              border-radius: 5px;
+              background: darkgray;
+
+              a {
+                font-size: 14px;
+                text-decoration: none;
+                color: aliceblue;
+              }
+            }
+
+            ul {
+              margin-top: 5px;
+              padding: 0;
+              //display: none;
+              .constructor{
+                list-style: none;
+                margin-bottom: 10px;
+                a{
+                  color: black;
+                  &.active{
+                    color: aliceblue;
+                  }
+                }
+
+              }
+
+            }
+            &.active{
+              color: aliceblue;
+            }
+
+          }
+
+        }
+      }
+      .user{
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .layout {
+    padding: 50px;
+    width: 100vw;
+
+    &:before {
+      content: '';
+      background-image: url("../../../../assets/image/background/fon2.png");
+      position: absolute;
+      top: 0;
+      width: 100%;
+      left: 0;
+      height: 100%;
+      opacity: 0.2;
+      z-index: -1;
+      filter: opacity(0.2);
+    }
+  }
+}

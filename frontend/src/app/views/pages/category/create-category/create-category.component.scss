@@ -1,0 +1,125 @@
+.create-category{
+  .create-category-title{
+    font-size: 18px;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .create-input{
+    margin-top: 50px;
+    max-width: 420px;
+    .category-input{
+
+      margin-bottom: 30px;
+
+      input{
+        width: 100%;
+        border: 1px solid gray;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        outline: none;
+        font-size: 14px;
+      }
+    }
+  }
+  .category-btn{
+    button{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      background: #c3c27e;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+.positions{
+  position: relative;
+  .position-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #80808080;
+    padding-bottom: 10px;
+    .position-head-title{
+      font-size: 18px;
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    }
+
+    .position-create{
+      width: 30px;
+      height: 30px;
+      a{
+        svg{
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .position-items{
+
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-gap: 15px;
+    .position-item{
+      .position-modal{
+        cursor: pointer;
+        .position-image{
+
+          border-radius: 5px;
+          width: 200px;
+          height: 200px;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+
+          .position-cost{
+            display: inline-block;
+            //width: 50px;
+            padding: 5px;
+            background: #ebeb13fa;
+            text-align: center;
+            font-size: 16px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 4px;
+          }
+
+
+        }
+      }
+
+
+      .position-action{
+        margin-top: 10px;
+        a{
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          margin-right: 15px;
+          svg{
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+      .position-title {
+        padding: 10px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<form class="login" [formGroup]="loginForm"
+(ngSubmit)="onSubmint()"
+>
+  <div class="login-items">
+    <div class="login-title">
+      Войти в личный кабинет
+    </div>
+    <div class="login-item">
+      <div class="login-input">
+        <label>
+          <input type="text" placeholder="Электронная почта" formControlName="email"
+                 [ngStyle]="{'border-color': loginForm.get('email')?.invalid
+                 && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ? 'red' : ''}"
+          >
+        </label>
+        <label>
+          <input type="password" placeholder="Пароль" formControlName="password"
+                 [ngStyle]="{'border-color': loginForm.get('password')?.invalid
+                 && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty) ? 'red' : ''}"
+          >
+        </label>
+      </div>
+      <div class="login-btn">
+        <button [disabled]="loginForm.invalid || loginForm.disabled">Войти</button>
+      </div>
+      <div class="login-image">
+        <img src="assets/image/background/Макарон-без-фона.png" alt="">
+      </div>
+    </div>
+    <a routerLink="/">Вернуться на главную</a>
+  </div>
+  <div class="logo-img">
+
+  </div>
+</form>

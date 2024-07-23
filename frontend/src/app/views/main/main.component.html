@@ -1,0 +1,237 @@
+<section class="main">
+
+  <div class="header-nav" id="headerNav">
+    <nav class="nav-items">
+      <ul class="menu">
+        <li class="menu-nav" *ngIf="pathConstructor,else menu">
+          <a routerLink="/">Меню</a>
+        </li>
+        <ng-template #menu>
+          <li *ngFor="let category of categories">
+            <a (click)="scroll(category._id)"
+               [ngStyle]="{'display': categoriesId.includes(category._id) &&
+              !positionsHidden.includes(category._id) ? 'block' : 'none',
+             'border-bottom': posit === category._id ? '1px solid black': '' }"
+            >{{category.name}}</a>
+          </li>
+        </ng-template>
+
+        <li class="constructor-nav" *ngIf="!pathConstructor,else menuConstructor">
+          <a routerLink="/constructor"
+             [ngStyle]="{'border-bottom': pathConstructor ? '1px solid black': '' }"
+          >Конструктор пасты</a>
+        </li>
+        <ng-template #menuConstructor>
+          <li>
+            <a (click)="scrollTo('pastas')"
+               [ngStyle]="{'border-bottom': posit === 'pastas' ? '1px solid black': ''}"
+            >Пасты</a>
+          </li>
+          <li>
+            <a (click)="scrollTo('sauces')"
+               [ngStyle]="{'border-bottom': posit === 'sauces' ? '1px solid black': ''}"
+            >Соус</a>
+          </li>
+          <li>
+            <a (click)="scrollTo('extras')"
+               [ngStyle]="{'border-bottom': posit === 'extras' ? '1px solid black': ''}"
+            >Добавки</a>
+          </li>
+        </ng-template>
+      </ul>
+
+      <div class="search" [formGroup]="searchInput">
+        <input type="text" formControlName="search" placeholder="Поиск...">
+      </div>
+
+    </nav>
+  </div>
+
+  <div class="loader"
+       *ngIf="categories.length <= 0 && positionsCategories.length <= 0
+       && pasta.length <= 0 && sauce.length <= 0 && extra.length <= 0">
+    <div class="loader-item"></div>
+  </div>
+
+
+  <div class="main-item" *ngIf="!pathConstructor">
+
+
+    <div id="{{category._id}}" class="main-categories" *ngFor="let category of categories"
+         [ngStyle]="{'display': positionsHidden.includes(category._id) ? 'none' : 'block'}">
+
+      <div class="main-category-title" *ngIf="categoriesId.includes(category._id)">
+        {{category.name}}
+      </div>
+
+      <div class="main-position-items">
+        <div class="main-positions"
+             [ngStyle]="{'display': category._id !== position.category ? 'none' : 'block'}"
+             *ngFor="let position of positionsCategories">
+
+          <div class="main-position-item"
+               [ngStyle]="{'display': positionsHidden.includes(position._id) ? 'none' : 'flex'}"
+               *ngIf="category._id === position.category">
+            <div (click)="openModal(position)">
+              <div class="position-image" *ngIf="position.image, else image"
+                   [ngClass]="{'active': posit === category._id}"
+                   style="background-image: url('{{uploads + position.image}}')">
+
+                <div class="position-cost">{{position.cost | currency: 'RUB':'₽'}}</div>
+              </div>
+
+              <ng-template #image>
+                <div class="position-image"
+                     [ngClass]="{'active': posit === category._id}"
+                     style="background-image: url('assets/image/background/product.noimage.png')">
+
+                  <div class="position-cost">{{position.cost | currency: 'RUB':'₽'}}</div>
+                </div>
+              </ng-template>
+            </div>
+
+            <div class="position-title">{{position.name}}</div>
+
+
+            <div *ngIf="isLogget">
+              <count-selector [position]="position" (onPosition)="show($event)"></count-selector>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!--  <div class="constructor">-->
+  <div class="constructor" *ngIf="pathConstructor">
+    <div class="constructor-item" *ngIf="pasta.length > 0" id="pastas">
+      <div class="main-category-title">
+        Пасты
+      </div>
+      <div class="main-position-items">
+        <div class="main-positions" *ngFor="let pasta of pasta">
+
+          <div class="main-position-item"
+
+               [ngStyle]="{'display': positionsHidden.includes(pasta._id) ? 'none' : 'flex'}">
+
+            <div (click)="openModalConstructor(pasta)">
+              <div class="position-image" *ngIf="pasta.image, else image"
+                   [ngClass]="{'active': posit === 'pastas'}"
+                   style="background-image: url('{{uploads + pasta.image}}')">
+
+                <div class="position-cost">{{pasta.cost | currency: 'RUB':'₽'}}</div>
+              </div>
+
+              <ng-template #image>
+                <div class="position-image"
+                     [ngClass]="{'active': posit === 'pastas'}"
+                     style="background-image: url('assets/image/background/product.noimage.png')">
+
+                  <div class="position-cost">{{pasta.cost | currency: 'RUB':'₽'}}</div>
+                </div>
+              </ng-template>
+            </div>
+
+
+            <div class="position-title">{{pasta.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="constructor-item" *ngIf="sauce.length > 0" id="sauces">
+      <div class="main-category-title">
+        Cоус
+      </div>
+      <div class="main-position-items">
+        <div class="main-positions" *ngFor="let sauce of sauce">
+
+          <div class="main-position-item"
+               [ngStyle]="{'display': positionsHidden.includes(sauce._id) ? 'none' : 'flex'}">
+
+            <div (click)="openModalConstructor(sauce)">
+              <div class="position-image" *ngIf="sauce.image, else image"
+                   [ngClass]="{'active': posit === 'sauces'}"
+                   style="background-image: url('{{uploads + sauce.image}}')">
+
+                <div class="position-cost">{{sauce.cost | currency: 'RUB':'₽'}}</div>
+              </div>
+
+              <ng-template #image>
+                <div class="position-image"
+                     [ngClass]="{'active': posit === 'sauces'}"
+                     style="background-image: url('assets/image/background/product.noimage.png')">
+
+                  <div class="position-cost">{{sauce.cost | currency: 'RUB':'₽'}}</div>
+                </div>
+              </ng-template>
+            </div>
+
+
+            <div class="position-title">{{sauce.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="constructor-item" *ngIf="extra.length > 0" id="extras">
+      <div class="main-category-title">
+        Добавки
+      </div>
+      <div class="main-position-items">
+        <div class="main-positions" *ngFor="let extra of extra">
+
+          <div class="main-position-item"
+
+               [ngStyle]="{'display': positionsHidden.includes(extra._id) ? 'none' : 'flex'}">
+            <div (click)="openModalConstructor(extra)">
+              <div class="position-image" *ngIf="extra.image, else image"
+                   [ngClass]="{'active': posit === 'extras'}"
+                   style="background-image: url('{{uploads + extra.image}}')">
+
+                <div class="position-cost">{{extra.cost | currency: 'RUB':'₽'}}</div>
+              </div>
+
+              <ng-template #image>
+                <div class="position-image"
+                     [ngClass]="{'active': posit === 'extras'}"
+                     style="background-image: url('assets/image/background/product.noimage.png')">
+
+                  <div class="position-cost">{{extra.cost | currency: 'RUB':'₽'}}</div>
+                </div>
+              </ng-template>
+            </div>
+
+            <div class="position-title">{{extra.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modal" *ngIf="modalOpen && positionModal, else modal" (click)="close($event)">
+  <div class="modal-items">
+    <div class="modal-position-image" style="background-image: url('{{uploads + positionModal.image}}');">
+      <div class="modal-position-title">{{positionModal.name}}</div>
+    </div>
+
+    <div class="modal-position-description">{{positionModal.description}}</div>
+  </div>
+</section>
+
+<ng-template #modal>
+  <section class="modal" *ngIf="modalOpen && positionModalConstructor" (click)="close($event)">
+    <div class="modal-items">
+      <div class="modal-position-image" style="background-image: url('{{uploads + positionModalConstructor.image}}');">
+        <div class="modal-position-title">{{positionModalConstructor.name}}</div>
+      </div>
+
+      <div class="modal-position-description">{{positionModalConstructor.description}}</div>
+    </div>
+  </section>
+</ng-template>

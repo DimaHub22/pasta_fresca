@@ -1,0 +1,57 @@
+<section class="create">
+  <div class="create-head">
+    <div class="title" *ngIf="!paramsPosition,else title">
+      Создание > "{{position}}"
+    </div>
+    <ng-template #title>
+      <div class="title">
+        Pедактирование > "{{positionName}}"
+      </div>
+    </ng-template>
+    <div class="back" (click)="goBack()">Вернуться в {{position}}</div>
+  </div>
+
+  <form class="create-form" [formGroup]="createInput">
+    <div class="create-input">
+      <label>
+        <input type="text" placeholder="Введите название {{position.toLocaleLowerCase()}}" formControlName="name">
+      </label>
+      <label>
+        <input type="text" placeholder="Цена" formControlName="cost">
+      </label>
+      <label>
+        <textarea name="" cols="30" rows="10" formControlName="description"></textarea>
+      </label>
+      <label>
+        <input type="file" (change)="onFileUpload($event)" style="display: none" #input>
+      </label>
+    </div>
+
+    <div class="create-select">
+
+      <div class="form-choice">
+        <button (click)="triggerClick()">Выбрать изображение</button>
+      </div>
+      <div class="preview" *ngIf="imagePreview, else image"
+           style="background-image: url('{{imagePreview}}')">
+      </div>
+
+      <ng-template #image>
+        <div class="preview"
+             style="background-image: url('assets/image/background/product.noimage.png')">
+        </div>
+      </ng-template>
+
+    </div>
+
+  </form>
+
+  <div class="save">
+    <button *ngIf="!paramsPosition; else editBtn" (click)="create()">Создать</button>
+
+    <ng-template #editBtn>
+      <button (click)="editPosition()">Изменить</button>
+    </ng-template>
+  </div>
+
+</section>

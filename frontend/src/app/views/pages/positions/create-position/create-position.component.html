@@ -1,0 +1,66 @@
+<section class="create-positions">
+  <div class="create-positions-title">
+    <div class="position-title">
+      <a routerLink="/dashboard/position">Позиции</a> >
+      <span *ngIf="!paramsPosition; else edit">Создание позиции</span>
+    </div>
+    <div class="back" *ngIf="paramsCategory">
+      <div (click)="goBack()">Вернуться в категорию "{{paramsCategory}}"</div>
+    </div>
+  </div>
+
+  <ng-template #edit>
+    <span>Редактирование позиции</span>
+  </ng-template>
+
+  <form class="create-form" [formGroup]="createInput">
+    <div class="create-input">
+      <label>
+        <input type="text" placeholder="Введите название позиции" formControlName="name">
+      </label>
+      <label>
+        <input type="text" placeholder="Цена" formControlName="cost">
+      </label>
+      <label>
+        <textarea name="" cols="30" rows="10" formControlName="description"></textarea>
+      </label>
+      <label>
+        <input type="file" (change)="onFileUpload($event)" style="display: none" #input>
+      </label>
+    </div>
+
+    <div class="create-select">
+      <select name="" id="" [(ngModel)]="selectedDevice" formControlName="select" >
+        <option disabled>Выберете категорию</option>
+        <option [ngValue]="category._id" *ngFor="let category of categories">{{category.name}}</option>
+      </select>
+
+      <div class="form-choice">
+        <button (click)="triggerClick()">Выбрать изображение</button>
+      </div>
+      <div class="preview" *ngIf="imagePreview, else image"
+           style="background-image: url('{{imagePreview}}')">
+      </div>
+
+      <ng-template #image>
+        <div class="preview"
+             style="background-image: url('assets/image/background/product.noimage.png')">
+        </div>
+      </ng-template>
+
+    </div>
+
+  </form>
+
+  <div class="save">
+    <button *ngIf="!paramsPosition; else editBtn" (click)="create()">Создать</button>
+
+    <ng-template #editBtn>
+      <button (click)="editPosition()">Редактировать</button>
+    </ng-template>
+  </div>
+
+
+</section>
+
+

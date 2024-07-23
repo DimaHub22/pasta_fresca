@@ -1,0 +1,187 @@
+<header class="header" #header>
+
+
+  <div class="header-items">
+    <div class="logo-item">
+      <div class="logo">
+        Pasta Fresca
+      </div>
+      <div class="time-work" *ngIf="timeWork; else time">
+
+        <div class="time-work-item">
+          <div class="time-work-title">
+            Сейчас мы открыты
+          </div>
+          <div class="opening-hours">
+            Ждем Вас с 12.00 до 23.00
+          </div>
+        </div>
+
+        <div class="zona"></div>
+      </div>
+
+      <ng-template #time>
+        <div class="time-work">
+          <div class="time-work-item">
+            <div class="time-work-title">
+              Сейчас мы закрыты
+            </div>
+            <div class="opening-hours">
+              Ждем Вас с 12.00
+            </div>
+          </div>
+
+          <div [ngStyle]="{'background': 'red'}" class="zona"></div>
+        </div>
+      </ng-template>
+
+    </div>
+
+    <div class="header-action">
+      <div class="reviews">
+        <a (click)="openModal('comment')">Оставить отзыв</a>
+      </div>
+      <div class="location">
+        <a (click)="openModal('location')">
+
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+               x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"
+               width="40px" height="40px">
+<g id="_01_align_center">
+	<path fill="#ffffff"
+        d="M255.104,512.171l-14.871-12.747C219.732,482.258,40.725,327.661,40.725,214.577c0-118.398,95.981-214.379,214.379-214.379   s214.379,95.981,214.379,214.379c0,113.085-179.007,267.682-199.423,284.932L255.104,512.171z M255.104,46.553   c-92.753,0.105-167.918,75.27-168.023,168.023c0,71.042,110.132,184.53,168.023,236.473   c57.892-51.964,168.023-165.517,168.023-236.473C423.022,121.823,347.858,46.659,255.104,46.553z"/>
+  <path fill="#ffffff"
+        d="M255.104,299.555c-46.932,0-84.978-38.046-84.978-84.978s38.046-84.978,84.978-84.978s84.978,38.046,84.978,84.978   S302.037,299.555,255.104,299.555z M255.104,172.087c-23.466,0-42.489,19.023-42.489,42.489s19.023,42.489,42.489,42.489   s42.489-19.023,42.489-42.489S278.571,172.087,255.104,172.087z"/>
+</g>
+</svg>
+        </a>
+      </div>
+      <div class="contacts">
+        <a href="tel:+79217737911">+7 (921) 773-79-11</a>
+      </div>
+      <a routerLink="/login" *ngIf="!isLogget">
+        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.5293 7.24498C8.82638 3.79498 10.5993 2.38623 14.4805 2.38623H14.6051C18.8889 2.38623 20.6043 4.10165 20.6043 8.3854V14.6337C20.6043 18.9175 18.8889 20.6329 14.6051 20.6329H14.4805C10.628 20.6329 8.85513 19.2433 8.53888 15.8508"
+            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1.91699 11.5H14.2603" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round"/>
+          <path d="M12.123 8.28955L15.3335 11.5L12.123 14.7104" stroke="#ffffff" stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a routerLink="/dashboard" *ngIf="isLogget">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12.1207 12.78C12.0507 12.77 11.9607 12.77 11.8807 12.78C10.1207 12.72 8.7207 11.28 8.7207 9.50998C8.7207 7.69998 10.1807 6.22998 12.0007 6.22998C13.8107 6.22998 15.2807 7.69998 15.2807 9.50998C15.2707 11.28 13.8807 12.72 12.1207 12.78Z"
+            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+            d="M18.7398 19.3801C16.9598 21.0101 14.5998 22.0001 11.9998 22.0001C9.39977 22.0001 7.03977 21.0101 5.25977 19.3801C5.35977 18.4401 5.95977 17.5201 7.02977 16.8001C9.76977 14.9801 14.2498 14.9801 16.9698 16.8001C18.0398 17.5201 18.6398 18.4401 18.7398 19.3801Z"
+            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+      </a>
+    </div>
+  </div>
+
+  <div class="header-title">Pasta Fresca</div>
+
+  <div class="scroll-menu">
+    <div class="scroll-title">
+      Меню
+    </div>
+    <div class="arrow" (click)="scrollTo()">
+      <svg xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24" width="40px" height="40px">
+        <g>
+          <path fill="#ffffff" d="M.44,10.982a1.5,1.5,0,0,1,2.121,0l7.671,7.672h0a2.5,2.5,0,0,0,3.536,0l7.671-7.672A1.5,1.5,0,1,1,23.561,13.1l-7.672,7.672a5.5,5.5,0,0,1-7.778,0L.439,13.1a1.5,1.5,0,0,1,0-2.118Z"/>
+          <path fill="#ffffff" d="M.44,1.439a1.5,1.5,0,0,1,2.121,0l9.085,9.086h0a.5.5,0,0,0,.707,0L21.439,1.44a1.5,1.5,0,0,1,2.122,2.119L14.475,12.64a3.505,3.505,0,0,1-4.95,0L.439,3.559a1.5,1.5,0,0,1,0-2.12Z"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</header>
+
+<section class="modal-comments" *ngIf="modalOpen">
+  <div class="modal-comment-item">
+    <div class="comment-item-title">
+      Оставить отзыв
+    </div>
+
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmint()">
+      <div class="comment-input">
+        <label>
+          <input type="text" placeholder="Ваше имя"
+                 formControlName="name"
+                 [ngStyle]="{'border-color': commentForm.get('name')?.invalid
+                 && (commentForm.get('name')?.touched || commentForm.get('name')?.dirty) ? 'red' : ''}"
+          >
+        </label>
+      </div>
+      <div class="comment-input">
+        <label>
+          <input type="text" placeholder="Ваш email"
+                 formControlName="email"
+                 [ngStyle]="{'border-color': commentForm.get('email')?.invalid
+                 && (commentForm.get('email')?.touched || commentForm.get('email')?.dirty) ? 'red' : ''}">
+          <div class="text-danger" *ngIf="commentForm.get('email')?.errors?.['email']">
+            Не верный формат email.
+          </div>
+        </label>
+
+      </div>
+      <div class="comment-input">
+        <label>
+          <textarea name="" id="" cols="30" rows="10" formControlName="comment"></textarea>
+        </label>
+      </div>
+
+      <div class="rating-area">
+        <input type="radio" id="star-5" value="5" formControlName="raiting">
+        <label for="star-5" title="Оценка «5»"></label>
+        <input type="radio" id="star-4" value="4" formControlName="raiting">
+        <label for="star-4" title="Оценка «4»"></label>
+        <input type="radio" id="star-3" value="3" formControlName="raiting">
+        <label for="star-3" title="Оценка «3»"></label>
+        <input type="radio" id="star-2" value="2" formControlName="raiting">
+        <label for="star-2" title="Оценка «2»"></label>
+        <input type="radio" id="star-1" value="1" formControlName="raiting">
+        <label for="star-1" title="Оценка «1»"></label>
+      </div>
+
+      <div class="comment-action">
+        <button [disabled]="commentForm.invalid || commentForm.disabled">Отправить</button>
+      </div>
+    </form>
+
+    <div class="close" (click)="modalOpen = false">
+      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20px"
+           height="20px">
+        <path fill="black"
+              d="m16.707,8.707l-3.293,3.293,3.293,3.293-1.414,1.414-3.293-3.293-3.293,3.293-1.414-1.414,3.293-3.293-3.293-3.293,1.414-1.414,3.293,3.293,3.293-3.293,1.414,1.414Zm7.293,3.293c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-2,0c0-5.514-4.486-10-10-10S2,6.486,2,12s4.486,10,10,10,10-4.486,10-10Z"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<section class="modal-location" *ngIf="modalLocation">
+  <div class="modal-location-map">
+    <iframe
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A95395e42f3c3af399ce12b122b9235809b8949033160ca550a6869d988fa2d89&amp;source=constructor"
+      width="650" height="475" frameborder="0"></iframe>
+
+    <div class="close" (click)="modalLocation = false">
+      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20px"
+           height="20px">
+        <path fill="black"
+              d="m16.707,8.707l-3.293,3.293,3.293,3.293-1.414,1.414-3.293-3.293-3.293,3.293-1.414-1.414,3.293-3.293-3.293-3.293,1.414-1.414,3.293,3.293,3.293-3.293,1.414,1.414Zm7.293,3.293c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-2,0c0-5.514-4.486-10-10-10S2,6.486,2,12s4.486,10,10,10,10-4.486,10-10Z"/>
+      </svg>
+    </div>
+  </div>
+
+</section>

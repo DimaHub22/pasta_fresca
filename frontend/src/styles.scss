@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  src: url("/assets/fonts/Montserrat-Bold.ttf");
+
+}
+html, body {
+  scroll-behavior: smooth;
+  height: 100%; }
+body { margin: 0;
+  font-family: Montserrat,sans-serif }
+
+
+app-layout{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  app-header{
+    flex: 0;
+  }
+  app-main{
+    flex: 1;
+  }
+}
+
+.mat-snack-bar-container{
+  background: #842029;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 198px);
+
+  .mat-simple-snackbar{
+    justify-content: center;
+  }
+}
+
+
+
+
+.agree{
+  //width: 272px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgba(239, 43, 43, 0.9);
+  color: white;
+  text-align: center;
+  z-index: 1;
+  .agree-title{
+    font-size: 15px;
+    line-height: 145%;
+  }
+  .agree-btns{
+    margin-top: 7px;
+    display: flex;
+    justify-content: center;
+    grid-gap: 20px;
+    font-size: 15px;
+    a{
+      transition: all 0.3s linear;
+      border: 1px solid transparent;
+      color: white;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      &:hover{
+        //border: 1px solid white;
+        border-radius: 5px;
+        color: whitesmoke;
+        background: rgba(155, 35, 35, 0.9);
+      }
+    }
+
+
+  }
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #808080b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+
+  .modal-items {
+    width: 400px;
+    //height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: white;
+
+    .modal-position-image {
+      width: 400px;
+      height: 300px;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+
+      .modal-position-title {
+        padding: 5px;
+        background: #ebeb13fa;
+        text-align: center;
+        font-size: 16px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 0 4px 0 0;
+      }
+    }
+
+    .modal-position-description {
+      padding: 20px 10px;
+    }
+  }
+}
+
+//owl-carousel-o {
+//  position: absolute;
+//  height: 100vh;
+//  width: 100%;
+//  top: 0;
+//  left: 0;
+//}
+//
+.owl-carousel .owl-item {
+
+  width: 230px;
+
+}

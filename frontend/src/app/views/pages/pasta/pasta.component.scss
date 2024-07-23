@@ -1,0 +1,30 @@
+.constructor{
+  .constructor-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #80808080;
+    padding-bottom: 10px;
+    .constructor-head-title{
+      font-size: 18px;
+    }
+    .constructor-create{
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      a {
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .constructor-items{
+    margin-top: 50px;
+    .constructor-item{
+      display: flex;
+    }
+  }
+}

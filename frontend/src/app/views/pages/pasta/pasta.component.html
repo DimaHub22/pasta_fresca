@@ -1,0 +1,34 @@
+<section class="constructor">
+  <div class="constructor-head">
+    <div class="constructor-head-title">{{title}}</div>
+    <div class="constructor-create">
+      <a matTooltip="Создать {{title.toLocaleLowerCase()}}" (click)="navigate()">
+        <svg id="Layer_1" height="40px" viewBox="0 0 24 24" width="40px" xmlns="http://www.w3.org/2000/svg"
+             data-name="Layer 1">
+          <path fill="#237905"
+                d="m12 0a12 12 0 1 0 12 12 12.013 12.013 0 0 0 -12-12zm0 22a10 10 0 1 1 10-10 10.011 10.011 0 0 1 -10 10zm5-10a1 1 0 0 1 -1 1h-3v3a1 1 0 0 1 -2 0v-3h-3a1 1 0 0 1 0-2h3v-3a1 1 0 0 1 2 0v3h3a1 1 0 0 1 1 1z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="constructor-items">
+
+    <div class="constructor-item">
+      <cart [pasta]="pasta" [url]="url" (update)="update($event)" *ngFor="let pasta of pasta"></cart>
+    </div>
+
+    <div class="constructor-item">
+      <cart [pasta]="sauce" [url]="url" (update)="update($event)"  *ngFor="let sauce of sauce"></cart>
+    </div>
+
+    <div class="constructor-item">
+      <cart [pasta]="extra" [url]="url" (update)="update($event)" *ngFor="let extra of extra"></cart>
+    </div>
+
+    <div *ngIf="pasta.length <= 0 && sauce.length <= 0 && extra.length <= 0">У вас пока нет созданых {{titleFree}}</div>
+  </div>
+
+
+
+</section>
